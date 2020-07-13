@@ -2,10 +2,17 @@
 Input: a List of integers where every int except one shows up twice
 Returns: an integer
 '''
+from collections import Counter
 def single_number(arr):
     # Your code here
+    newArray = Counter(arr)
+    for key, value in newArray.items():
+        if value == 1:
+            return key
+        if value > 1:
+            pass
 
-    pass
+    
 
 
 if __name__ == '__main__':
