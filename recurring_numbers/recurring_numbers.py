@@ -1,4 +1,8 @@
 from collections import Counter
+import time
+
+start_time = time.time()
+
 def recurring(str):
     count = Counter(str)
     new_arr = []
@@ -14,3 +18,5 @@ def recurring(str):
 arr = [1, 1, 1, 4, 4, 5, 5, 3, 3, 9, 0, 0, 12, 12]
 
 print(f"The recurring numbers {recurring(arr)}")
+end_time = time.time()
+print(f'Runtime {end_time - start_time} seconds')
