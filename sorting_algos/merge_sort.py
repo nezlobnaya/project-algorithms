@@ -1,11 +1,11 @@
 def mergeSort(myList):
     if len(myList) > 1:
         mid = len(myList) // 2
-        left = myList[:mid]
+        left = myList[:mid] #The list is divided into left and right 
         right = myList[mid:]
 
-        # Recursive call on each half
-        mergeSort(left)
+        # Recursive call on each half until two adjacent elements are obtained.
+        mergeSort(left) 
         mergeSort(right)
 
         # Two iterators for traversing the two halves
@@ -39,8 +39,9 @@ def mergeSort(myList):
             k += 1
 
 myList = [54,26,93,17,77,31,44,55,20]
+print("Original Array: ",myList)
 mergeSort(myList)
-print(myList)
+print("Sorted Array: ", myList)
 
 # Time Complexity: O(n log(n))
 
