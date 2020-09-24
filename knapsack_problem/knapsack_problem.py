@@ -19,6 +19,7 @@
 
 
 def max_duffel_bag_value(cake_tuples, weight_capacity):
+    
     # We make a list to hold the maximum possible value at every
     # duffel bag weight capacity from 0 to weight_capacity
     # starting each index with value 0
@@ -58,7 +59,6 @@ def max_duffel_bag_value(cake_tuples, weight_capacity):
         # Add each capacity's max value to our list so we can use them
         # when calculating all the remaining capacities
         max_values_at_capacities[current_capacity] = current_max_value
-
     return max_values_at_capacities[weight_capacity]
 
 # Time/ Space complexity
