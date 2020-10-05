@@ -1,3 +1,5 @@
+from collections import defaultdict
+import heapq
 """
 
 The problem is that they want to efficiently transfer a piece of information 
@@ -40,7 +42,7 @@ example_graph = {
     'G': {'F': 1},
 }
 
-dict(create_spanning_tree(example_graph, 'A'))
+print(dict(create_spanning_tree(example_graph, 'A')))
 
 # {'A': set(['B']),
 #  'B': set(['C', 'D']),
