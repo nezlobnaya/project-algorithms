@@ -8,7 +8,6 @@ all the players know the very latest position of every other player.
 This is important for Internet radio so that all the listeners that are tuned in 
 are getting all the data they need to reconstruct the song they are listening to. 
 from collections import defaultdict
-import heapq
 
 """
 
