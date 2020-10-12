@@ -45,6 +45,12 @@ class Graph:
         # Print the distance and predecessor array
         self.print_solution(dist)
 
+#Time complexity:
+#Θ(|V||E|) where |V| is number of vertices and |E| is number of edges. 
+# If the graph is complete, the value of |E| becomes Θ(|V|2).
+#Space complexity:
+# O(V^2) for an adjacency matrix and O(V+E) for an adjacency list.
+
 
 g = Graph(5)
 g.add_edge(0, 1, 5)
