@@ -2,6 +2,14 @@
 Bellman Ford Algorithm in Python
 The Bellman–Ford algorithm is an algorithm that computes shortest paths 
 from a single source vertex to all of the other vertices in a weighted digraph. 
+
+BF is not ideal for most SSSP(single source shortest path) problems because Dijkstra's algo is much faster
+which is O((E +V) log(V))
+
+However Dijkstra's fail when the graph has negative edge weights.
+BF becomes really handy to detect negative cycles and determine where they occur.
+One particular neat applications is financial arbitrage
+
 """
 
 class Graph:
