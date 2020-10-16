@@ -31,6 +31,8 @@ def kadane(A):
 
     return maxSoFar
 
+#Time complexity O(n)
+#Space complexity O(1)
 
 if __name__ == '__main__':
 
