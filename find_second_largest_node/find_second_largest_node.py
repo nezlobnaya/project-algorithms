@@ -32,3 +32,17 @@ Complexity
 We're doing one walk down our BST, which means O(h)O(h)O(h) time, where hhh is the height of the tree (again, that's O(lg⁡n)O(\lg{n})O(lgn) if the tree is balanced, O(n)O(n)O(n) otherwise). O(1)O(1)O(1) space.
 
 '''
+def second_largest(root):
+    def reverse_inorder(root, traversal):
+        if root is None or len(traversal) == 2:
+            return
+        reverse_inorder(root.right, traversal)
+        traversal.append(root.val)
+        reverse_inorder(root.left, traversal)
+        return
+    
+    traversal = []
+    
+    reverse_inorder(root, traversal)
+    
+    return traversal[1]
