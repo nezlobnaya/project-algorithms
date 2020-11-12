@@ -29,7 +29,10 @@ def find_second_largest(root_node):
 
 '''
 Complexity
-We're doing one walk down our BST, which means O(h)O(h)O(h) time, where hhh is the height of the tree (again, that's O(lg⁡n)O(\lg{n})O(lgn) if the tree is balanced, O(n)O(n)O(n) otherwise). O(1)O(1)O(1) space.
+We're doing one walk down our BST, which means O(h)time, 
+where h is the height of the tree 
+(again, that's O(lg⁡n) if the tree is balanced, O(n) otherwise). 
+O(1) space.
 
 '''
 def second_largest(root):
