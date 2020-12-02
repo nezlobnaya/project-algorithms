@@ -29,7 +29,7 @@ def preorder(root, level, dict):
     # recur for left and right subtree by increasing level by 1
     preorder(root.left, level + 1, dict)
     preorder(root.right, level + 1, dict)
-    print("Dict :", f"{root.value}: {level}")
+    print("Dict :", f"Level: {level}: Value{root.value}")
     print("Dict whole :", dict)
  
 # Recursive function to print level order traversal of given binary tree
@@ -47,6 +47,7 @@ def levelOrderTraversal(root):
         print(f"Level {i}:", dict[i])
  
  
+# Time O(n) Space O(n)
 if __name__ == '__main__':
  
     root = Node(15)
