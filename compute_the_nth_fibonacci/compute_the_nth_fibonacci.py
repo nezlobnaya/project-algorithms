@@ -67,9 +67,22 @@ def fib(n):
         prev = current
 
     return current
+
+# import math 
+# def fib(n):
+#     val1 = (1+ math.sqrt(5))/2
+#     val2 = (1 - math.sqrt(5))/2
+#     num = (val1**n + val2**n)/math.sqrt(5)
+#     return num
+
 for i in range(8):
     print(f'Number{i}: {fib(i)}')
 
+print('Print 1st', fib(1))
+print('Print 2nd', fib(2))
+print('Print 3rd', fib(3))
+print('Print 4th', fib(4))
+print('Print 5th', fib(5))
 print('Print 6th', fib(6))
 
 # Time complexity O(n) 
