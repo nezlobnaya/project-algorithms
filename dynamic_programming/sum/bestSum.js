@@ -24,27 +24,46 @@ you may return any one of the shortest
 //     return shortestCombination;
 // }
 
-const bestSum = (targetSum, numbers, memo={}) => {
-    if (targetSum in memo) return memo[targetSum];
-    if (targetSum === 0) return [];
-    if (targetSum < 0) return null;
-    let shortestCombination = null
+// const bestSum = (targetSum, numbers, memo={}) => {
+//     if (targetSum in memo) return memo[targetSum];
+//     if (targetSum === 0) return [];
+//     if (targetSum < 0) return null;
+//     let shortestCombination = null
     
-    for (let num of numbers) {
-        const remainder = targetSum - num;
-        const remainderCombination = bestSum(remainder, numbers, memo);
-        if ( remainderCombination !== null) {
-            const combination = [ ...remainderCombination, num];
-            if (shortestCombination === null || combination.length < shortestCombination.length) {
-                shortestCombination = combination
+//     for (let num of numbers) {
+//         const remainder = targetSum - num;
+//         const remainderCombination = bestSum(remainder, numbers, memo);
+//         if ( remainderCombination !== null) {
+//             const combination = [ ...remainderCombination, num];
+//             if (shortestCombination === null || combination.length < shortestCombination.length) {
+//                 shortestCombination = combination
+//             }
+//         }
+//     }
+//     memo[targetSum] = shortestCombination;
+//     return shortestCombination;
+// }
+
+//tabulation
+
+const bestSum = (targetSum, numbers, memo={}) => {
+    const table = Array(targetSum + 1).fill(null);
+    table[0] = [];
+
+    for (let i = 0; i <= targetSum; i++) {
+        if (table[i] !== null) {
+            for (let num of numbers) {
+                const combination = [ ...table[i], num];
+                //if this current combination is shorter that what is already stored
+                if (!table[i +num] || table[i + num].length > combination.length) {
+                    table[i + num] = combination;
+                }
+                
             }
         }
     }
-    memo[targetSum] = shortestCombination;
-    return shortestCombination;
-}
-
-
+    return table[targetSum];
+};
 
 console.log(bestSum(7, [5, 3, 4, 7]));// [7]
 console.log(bestSum(8, [2, 3, 5]));// [3, 5]
