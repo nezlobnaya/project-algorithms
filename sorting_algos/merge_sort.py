@@ -40,7 +40,7 @@ def mergeSort(myList):
 
 myList = [54,26,93,17,77,31,44,55,20]
 print("Original Array: ",myList)
-mergeSort(myList)
+print(mergeSort(myList))
 print("Sorted Array: ", myList)
 
 # Time Complexity: O(n log(n))
