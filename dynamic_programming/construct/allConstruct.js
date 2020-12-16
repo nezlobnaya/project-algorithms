@@ -26,21 +26,38 @@ You may reuse elements of `wordBank` as many times as needed.
 // }
 
 
-const allConstruct = (target, wordbank, memo={}) => {
-    if (target in memo) return memo[target];
-    if (target === "") return [[]];
+// const allConstruct = (target, wordbank, memo={}) => {
+//     if (target in memo) return memo[target];
+//     if (target === "") return [[]];
     
-    const result = []
-    for (let word of wordbank) {
-        if (target.indexOf(word) === 0) {
-            const suffix = target.slice(word.length);
-            const suffixWays = allConstruct(suffix, wordbank, memo);
-            const targetWays = suffixWays.map(way => [word, ...way]);
-            result.push(...targetWays);
+//     const result = []
+//     for (let word of wordbank) {
+//         if (target.indexOf(word) === 0) {
+//             const suffix = target.slice(word.length);
+//             const suffixWays = allConstruct(suffix, wordbank, memo);
+//             const targetWays = suffixWays.map(way => [word, ...way]);
+//             result.push(...targetWays);
+//         }
+//     }
+//     memo[target] = result;
+//     return result;
+// }
+
+const allConstruct = (target, wordBank) => {
+    const table = Array(target.length + 1)
+        .fill()
+        .map(() => []);
+    table[0] = [[]];
+    
+    for (let i = 0; i <= target.length; i++) {     
+        for (let word of wordBank) {
+            if (target.slice(i, i + word.length) === word) {
+                const newCombinations = table[i].map(subArray => [ ...subArray, word]);
+                table[i + word.length].push(...newCombinations);
         }
+      }
     }
-    memo[target] = result;
-    return result;
+    return table[target.length];
 }
 
 console.log(allConstruct("purple", ["purp", "p", "ur", "le", "purpl"]));
@@ -55,7 +72,7 @@ console.log(allConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd", "ef", "c"]
 //   [ 'abcd', 'ef' ] ]
 
 console.log(allConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"]));//[]
-console.log(allConstruct("aaaaaaaaaaaaaaaaaaaaaaaaaz", [
+console.log(allConstruct("aaaaaaaaaaaaaaaaz", [
     "a",
     "aa",
     "aaa",
@@ -74,4 +91,8 @@ console.log(allConstruct("aaaaaaaaaaaaaaaaaaaaaaaaaz", [
 //brute force O(m)
 //memoize O(m)
 
-
+//Tabulation
+//Time complexity
+// O(n^m)
+//Space complexity 
+//O(n^m)

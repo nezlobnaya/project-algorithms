@@ -21,20 +21,38 @@ You may reuse elements of `wordBank` as many times as needed.
 //     return totalCount;
 // }
 
-const countConstruct = (target, wordBank, memo={}) => {
-    if (target in memo) return memo[target]
-    if (target === "") return 1;
-    let totalCount = 0;
+// const countConstruct = (target, wordBank, memo={}) => {
+//     if (target in memo) return memo[target]
+//     if (target === "") return 1;
+//     let totalCount = 0;
 
-    for (let word of wordBank) {
-        if (target.indexOf(word) === 0) {
-            const numWaysForRest = countConstruct(target.slice(word.length) , wordBank, memo);
-            totalCount += numWaysForRest;
+//     for (let word of wordBank) {
+//         if (target.indexOf(word) === 0) {
+//             const numWaysForRest = countConstruct(target.slice(word.length) , wordBank, memo);
+//             totalCount += numWaysFor Rest;
+//         }
+//     }
+//     memo[target] = totalCount;
+//     return totalCount;
+// }
+
+
+//tabulation
+const countConstruct = (target, wordBank) => {
+    const table = Array(target.length + 1).fill(0);
+    table[0] = 1;
+
+    for (let i = 0; i <= target.length; i++) {     
+            for (let word of wordBank) {
+                if (target.slice(i, i + word.length) === word) {
+                    table[i + word.length] += table[i]
+            }
         }
-    }
-    memo[target] = totalCount;
-    return totalCount;
+    
+  }
+    return table[target.length];
 }
+
 
 
 console.log(countConstruct("purple", ["purp", "p", "ur", "le", "purpl"]));//2
@@ -58,3 +76,8 @@ console.log(countConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", [
 //brute force O(m^2)
 //memoize O(m^2)
 
+//Tabulation
+//Time complexity
+// O(m^2*n)
+//Space complexity 
+//O(m)
