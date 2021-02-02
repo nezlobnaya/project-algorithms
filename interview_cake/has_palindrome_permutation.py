@@ -4,16 +4,22 @@ import unittest
 def has_palindrome_permutation(the_string):
 
     # Check if any permutation of the input is a palindrome
-    odd_chars = set()
-    for char in the_string:
-        if char in odd_chars:
-            odd_chars.remove(char)
-        else:
-            odd_chars.add(char)
+    # odd_chars = set()
+    # for char in the_string:
+    #     if char in odd_chars:
+    #         odd_chars.remove(char)
+    #     else:
+    #         odd_chars.add(char)
 
-    return len(odd_chars) <=1
+    # return len(odd_chars) <=1
 
+    value = 0
 
+    for ch in s:
+        ch_code = ord(ch)
+        value = value ^ (1 << ch_code)
+
+    return True if value & (value - 1)  == 0 else False
 
 
 
