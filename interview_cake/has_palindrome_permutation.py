@@ -19,8 +19,8 @@ def has_palindrome_permutation(s):
     for ch in s:
         ch_code = ord(ch) #represent each character with a bit using its ASCII number.
         value ^= (1 << ch_code)  #for each character you can flip the bit with xor
-    return value & (value - 1)  == 0  #a bit AND trick to determine if there are more than one set bit in the bit vector (also returns true for 0 set bits).
-                                      #can quickly test this by checking if the least significant 1 bit (n & -n) is the same as itself.
+    #return value & (value - 1)  == 0  #a bit AND trick to determine if there are more than one set bit in the bit vector (also returns true for 0 set bits).
+    return value == value & -value  #can quickly test this by checking if the least significant 1 bit (n & -n) is the same as itself.
 
 
 
